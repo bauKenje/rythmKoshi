@@ -64,7 +64,7 @@
             powerFunc = new PowerFunc(koefs);
             powerFunc.Solve();
             bool isNeedPlus = false;
-            for (var i = powerFunc.answers.Count - 1; i >= 0;  i--)
+            for (var i = powerFunc.answers.Count - 1; i >= 0; i--)
             {
                 var startVal = startValues[i];
                 if (startVal != 0)
@@ -110,15 +110,19 @@
                 }
                 y = Math.Round(y, 6);
 
-                Console.Write($"x = {x}; y = {y};");
-                choords.Add(x, y);
+
+                Console.WriteLine($"x = {x};");
 
                 for (var i = 0; i < currentValues.Length; i++)
                 {
-                    //Console.Write($"{currentValues[i]};");
+                    var difSymbols = string.Concat(Enumerable.Repeat("'", i));
+                    Console.WriteLine($"y{difSymbols}({x}) = {currentValues[i]}");
                     currentValues[i] = chordValues[i];
                 }
+
+                Console.WriteLine($"y = {y};");
                 Console.WriteLine();
+                choords.Add(x, y);
 
                 x += intervalStep;
                 x = Math.Round(x, 6);
